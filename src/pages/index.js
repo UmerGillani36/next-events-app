@@ -1,9 +1,11 @@
-import Head from 'next/head';
+import EventList from '../../components/events/EventList';
+import { getAllEvents } from '../../dummyData';
 
 export default function Home() {
+  const allEvents = getAllEvents();
   return (
     <div>
-      <h1>Home page</h1>
+      <EventList items={allEvents} />
     </div>
   );
 }
