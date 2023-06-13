@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import ErrorAlert from '../../../components/error-alert/error-alert';
 import EventContent from '../../../components/event-detail/event-content';
 import EventLogistics from '../../../components/event-detail/event-logistics';
@@ -17,6 +18,13 @@ const EventDetails = (props) => {
   }
   return (
     <>
+      <Head>
+        <title>Event Detail Page</title>
+        <meta
+          name="description"
+          content="Find a lot of great events that allow you to evolve..."
+        />
+      </Head>
       <EventSummary title={event.title} />
       <EventLogistics
         date={event.date}
