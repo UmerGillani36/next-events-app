@@ -13,8 +13,12 @@ export const insertDocument = async (client, collection, data) => {
   return result;
 };
 
-export const getALLComments = async (client, collection, sort) => {
+export const getALLComments = async (client, collection, sort, filter = {}) => {
   const db = client.db();
-  const documents = await db.collection(collection).find().sort(sort).toArray();
+  const documents = await db
+    .collection(collection)
+    .find(filter)
+    .sort(sort)
+    .toArray();
   return documents;
 };
