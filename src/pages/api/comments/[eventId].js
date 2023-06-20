@@ -33,11 +33,13 @@ async function handler(req, res) {
       .json({ message: 'Added successfully', comment: newComment });
   }
   if (req.method === 'GET') {
-    const dummyList = [
-      { id: 'c1', name: 'umer', text: 'My first Comment' },
-      { id: 'c2', name: 'ammar', text: 'My second Comment' },
-    ];
-    res.status(200).json({ comments: dummyList });
+    const documents = await db
+      .collection('comments')
+      .find()
+      .sort({ _id: -1 })
+      .toArray();
+
+    res.status(200).json({ comments: documents });
   }
   client.close();
 }
