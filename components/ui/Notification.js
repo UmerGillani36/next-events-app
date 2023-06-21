@@ -1,13 +1,11 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 
 import classes from './Notification.module.css';
-// import NotificationContext from '../../store/notification-context';
+import NotificationContext from '../../store/notification-context';
 
 function Notification(props) {
-//   const notificationCtx = useContext(NotificationContext);
-
   const { title, message, status } = props;
-
+  const context = useContext(NotificationContext);
   let statusClasses = '';
 
   if (status === 'success') {
@@ -25,8 +23,7 @@ function Notification(props) {
   const activeClasses = `${classes.notification} ${statusClasses}`;
 
   return (
-    <div className={activeClasses} 
-    // onClick={notificationCtx.hideNotification}
+    <div className={activeClasses} onClick={context.hideNotification}
     >
       <h2>{title}</h2>
       <p>{message}</p>
